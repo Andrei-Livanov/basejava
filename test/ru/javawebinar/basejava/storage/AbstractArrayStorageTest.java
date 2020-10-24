@@ -70,7 +70,6 @@ public abstract class AbstractArrayStorageTest {
             Assert.fail("Premature storage overflow");
             storage.clear();
         }
-        ;
         storage.save(new Resume());
     }
 
