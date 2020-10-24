@@ -15,9 +15,13 @@ public abstract class AbstractArrayStorageTest {
     protected Storage storage;
 
     private static final String UUID_1 = "uuid1";
+    private static final Resume RESUME_1 = new Resume(UUID_1);
     private static final String UUID_2 = "uuid2";
+    private static final Resume RESUME_2 = new Resume(UUID_2);
     private static final String UUID_3 = "uuid3";
+    private static final Resume RESUME_3 = new Resume(UUID_3);
     private static final String UUID_4 = "uuid4";
+    private static final Resume RESUME_4 = new Resume(UUID_4);
 
     protected AbstractArrayStorageTest(Storage storage) {
         this.storage = storage;
@@ -26,9 +30,9 @@ public abstract class AbstractArrayStorageTest {
     @Before
     public void setUp() throws Exception {
         storage.clear();
-        storage.save(new Resume(UUID_1));
-        storage.save(new Resume(UUID_2));
-        storage.save(new Resume(UUID_3));
+        storage.save(RESUME_1);
+        storage.save(RESUME_2);
+        storage.save(RESUME_3);
     }
 
     @Test
@@ -46,10 +50,9 @@ public abstract class AbstractArrayStorageTest {
 
     @Test
     public void save() {
-        Resume resume = new Resume(UUID_4);
-        storage.save(resume);
+        storage.save(RESUME_4);
         assertSize(4);
-        assertGet(resume);
+        assertGet(RESUME_4);
     }
 
     @Test(expected = ExistStorageException.class)
@@ -64,7 +67,7 @@ public abstract class AbstractArrayStorageTest {
                 storage.save(new Resume("uuid" + i));
             }
         } catch (StorageException e) {
-            Assert.fail("Storage overflow");
+            Assert.fail("Premature storage overflow");
             storage.clear();
         }
         ;
@@ -87,9 +90,9 @@ public abstract class AbstractArrayStorageTest {
     public void getAll() {
         Resume[] resumes = storage.getAll();
         assertSize(3);
-        assertGet(resumes[0]);
-        assertGet(resumes[1]);
-        assertGet(resumes[2]);
+        assertEquals(RESUME_1, resumes[0]);
+        assertEquals(RESUME_2, resumes[1]);
+        assertEquals(RESUME_3, resumes[2]);
     }
 
     @Test
