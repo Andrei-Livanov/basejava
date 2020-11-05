@@ -9,7 +9,7 @@ import ru.javawebinar.basejava.model.Resume;
 import static org.junit.Assert.*;
 
 public abstract class AbstractStorageTest {
-    protected Storage storage;
+    Storage storage;
 
     private static final String UUID_1 = "uuid1";
     private static final Resume RESUME_1 = new Resume(UUID_1);
@@ -20,9 +20,7 @@ public abstract class AbstractStorageTest {
     private static final String UUID_4 = "uuid4";
     private static final Resume RESUME_4 = new Resume(UUID_4);
 
-    private static final Resume[] RESUMES = new Resume[]{RESUME_1, RESUME_2, RESUME_3};
-
-    protected AbstractStorageTest(Storage storage) {
+    AbstractStorageTest(Storage storage) {
         this.storage = storage;
     }
 
@@ -76,11 +74,13 @@ public abstract class AbstractStorageTest {
         storage.delete(UUID_4);
     }
 
+
     @Test
     public void getAll() throws Exception {
-        Resume[] resumes = storage.getAll();
+        Resume[] RESUMES = new Resume[]{RESUME_1, RESUME_2, RESUME_3};
+        Resume[] actualResumes = storage.getAll();
         assertSize(3);
-        assertArrayEquals(RESUMES, resumes);
+        assertArrayEquals(RESUMES, actualResumes);
     }
 
     @Test
