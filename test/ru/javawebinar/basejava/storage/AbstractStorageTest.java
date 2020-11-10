@@ -6,19 +6,22 @@ import ru.javawebinar.basejava.exception.ExistStorageException;
 import ru.javawebinar.basejava.exception.NotExistStorageException;
 import ru.javawebinar.basejava.model.Resume;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public abstract class AbstractStorageTest {
     Storage storage;
 
     private static final String UUID_1 = "uuid1";
-    private static final Resume RESUME_1 = new Resume(UUID_1);
+    private static final Resume RESUME_1 = new Resume(UUID_1, "Name1");
     private static final String UUID_2 = "uuid2";
-    private static final Resume RESUME_2 = new Resume(UUID_2);
+    private static final Resume RESUME_2 = new Resume(UUID_2, "Name2");
     private static final String UUID_3 = "uuid3";
-    private static final Resume RESUME_3 = new Resume(UUID_3);
+    private static final Resume RESUME_3 = new Resume(UUID_3, "Name3");
     private static final String UUID_4 = "uuid4";
-    private static final Resume RESUME_4 = new Resume(UUID_4);
+    private static final Resume RESUME_4 = new Resume(UUID_4, "Name4");
 
     AbstractStorageTest(Storage storage) {
         this.storage = storage;
@@ -40,7 +43,7 @@ public abstract class AbstractStorageTest {
 
     @Test
     public void update() {
-        Resume updateResume = new Resume(UUID_1);
+        Resume updateResume = new Resume(UUID_1, "Name1");
         storage.update(updateResume);
         assertSame(updateResume, storage.get(UUID_1));
     }
@@ -76,11 +79,11 @@ public abstract class AbstractStorageTest {
 
 
     @Test
-    public void getAll() throws Exception {
-        Resume[] RESUMES = new Resume[]{RESUME_1, RESUME_2, RESUME_3};
-        Resume[] actualResumes = storage.getAll();
+    public void getAllSorted() throws Exception {
+        List<Resume> expectedResumes = Arrays.asList(RESUME_1, RESUME_2, RESUME_3);
+        List<Resume> actualResumes = storage.getAllSorted();
         assertSize(3);
-        assertArrayEquals(RESUMES, actualResumes);
+        assertEquals(expectedResumes, actualResumes);
     }
 
     @Test
