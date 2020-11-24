@@ -5,9 +5,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-/**
- * ru.javawebinar.basejava.model.Resume class
- */
 public class Resume implements Comparable<Resume> {
 
     // Unique identifier
@@ -15,7 +12,7 @@ public class Resume implements Comparable<Resume> {
     private final String fullName;
 
     private final Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
-    private final Map<SectionType, Section> sections = new EnumMap<>(SectionType.class);
+    private final Map<SectionType, AbstractSection> sections = new EnumMap<>(SectionType.class);
 
     public Resume(String fullName) {
         this(UUID.randomUUID().toString(), fullName);
@@ -36,7 +33,7 @@ public class Resume implements Comparable<Resume> {
         return contacts.get(type);
     }
 
-    public Section getSection(SectionType type) {
+    public AbstractSection getSection(SectionType type) {
         return sections.get(type);
     }
 
@@ -44,7 +41,7 @@ public class Resume implements Comparable<Resume> {
         contacts.put(type, value);
     }
 
-    public void addSection(SectionType type, Section section) {
+    public void addSection(SectionType type, AbstractSection section) {
         sections.put(type, section);
     }
 
@@ -54,37 +51,19 @@ public class Resume implements Comparable<Resume> {
         if (o == null || getClass() != o.getClass()) return false;
         Resume resume = (Resume) o;
         return uuid.equals(resume.uuid) &&
-                fullName.equals(resume.fullName);
+                fullName.equals(resume.fullName) &&
+                Objects.equals(contacts, resume.contacts) &&
+                Objects.equals(sections, resume.sections);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, fullName);
+        return Objects.hash(uuid, fullName, contacts, sections);
     }
-
-/*    @Override
-    public String toString() {
-        return uuid + " " + '(' + fullName + ')';
-    }*/
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(fullName).append("\n\n");
-
-        for (Map.Entry<ContactType, String> entry : contacts.entrySet()) {
-            stringBuilder.append(entry.getKey().getTitle()).append(" ");
-            stringBuilder.append(entry.getValue()).append("\n");
-        }
-
-        stringBuilder.append("\n");
-
-        for (Map.Entry<SectionType, Section> entry : sections.entrySet()) {
-            stringBuilder.append(entry.getKey().getTitle()).append("\n\n");
-            stringBuilder.append(entry.getValue().toString()).append("\n\n");
-        }
-
-        return stringBuilder.toString();
+        return uuid + " " + '(' + fullName + ')';
     }
 
     @Override

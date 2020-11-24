@@ -2,198 +2,165 @@ package ru.javawebinar.basejava;
 
 import ru.javawebinar.basejava.model.*;
 
-import java.time.LocalDate;
+import java.time.Month;
 
 public class ResumeTestData {
-    public static void main(String[] args) {
-        Resume resume = new Resume("Григорий Кислин");
-
-        // Contacts initialization
-        resume.addContact(ContactType.PHONE, "+7(921) 855-0482");
-        resume.addContact(ContactType.SKYPE, "grigory.kislin");
-        resume.addContact(ContactType.MAIL, "gkislin@yandex.ru");
-        resume.addContact(ContactType.LINKEDIN, "gkislin");
-        resume.addContact(ContactType.GITHUB, "gkislin");
-        resume.addContact(ContactType.STACKOVERFLOW, "gkislin");
-        resume.addContact(ContactType.HOME_PAGE, "Домашняя страница");
-
-        // Objective initialization
-        resume.addSection(SectionType.OBJECTIVE,
-                new TextSection("Ведущий стажировок и корпоративного обучения по Java Web и Enterprise " +
-                        "технологиям"));
-
-        // Personal initialization
-        resume.addSection(SectionType.PERSONAL,
-                new TextSection("Аналитический склад ума, сильная логика, креативность, инициативность. " +
-                        "Пурист кода и архитектуры."));
-
-        // Achievement initialization
-        resume.addSection(SectionType.ACHIEVEMENT, new ListSection(
-                "С 2013 года: разработка проектов \"Разработка Web приложения\",\"Java Enterprise\"," +
-                        " \"Многомодульный maven.\nМногопоточность. XML (JAXB/StAX). Веб сервисы (JAX-RS/SOAP). " +
-                        "Удаленное взаимодействие (JMS/AKKA)\".\nОрганизация онлайн стажировок и ведение проектов. " +
-                        "Более 1000 выпускников." +
-                        "\n\nРеализация двухфакторной аутентификации для онлайн платформы управления проектами Wrike. " +
-                        "Интеграция с Twilio,\nDuoSecurity, Google Authenticator, Jira, Zendesk." +
-                        "\n\nНалаживание процесса разработки и непрерывной интеграции ERP системы River BPM. Интеграция с 1С, " +
-                        "Bonita BPM,\nCMIS, LDAP. Разработка приложения управления окружением на стеке: " +
-                        "Scala/Play/Anorm/JQuery. Разработка SSO\nаутентификации и авторизации различных ERP модулей," +
-                        " интеграция CIFS/SMB java сервера." +
-                        "\n\nРеализация c нуля Rich Internet Application приложения на стеке технологий JPA, Spring, Spring-MVC, " +
-                        "GWT, ExtGWT\n(GXT), Commet, HTML5, Highstock для алгоритмического трейдинга." +
-                        "\n\nСоздание JavaEE фреймворка для отказоустойчивого взаимодействия слабо-связанных сервисов (SOA-base " +
-                        "архитектура,\nJAX-WS, JMS, AS Glassfish). Сбор статистики сервисов и информации о состоянии " +
-                        "через систему мониторинга Nagios.\nРеализация онлайн клиента для администрирования и " +
-                        "мониторинга системы по JMX (Jython/ Django)." +
-                        "\n\nРеализация протоколов по приему платежей всех основных платежных системы России (Cyberplat, Eport, " +
-                        "Chronopay,\nСбербанк), Белоруcсии(Erip, Osmp) и Никарагуа."
+    public static Resume createResume1(String uuid, String fullName) {
+        Resume resume1 = new Resume(uuid, fullName);
+        resume1.addContact(ContactType.PHONE, "555-55-55");
+        resume1.addContact(ContactType.MAIL, "email@mail.com");
+        resume1.addSection(SectionType.OBJECTIVE, new TextSection("Персональный тренер по фитнесу"));
+        resume1.addSection(SectionType.PERSONAL, new TextSection(
+                "Хopoшaя физичeckaя фopma, вынocливый, цeлeycтpemлeнный, cтpeccoycтoйчивый, тpyдoлюбивый"
         ));
-
-        // Qualification initialization
-        resume.addSection(SectionType.QUALIFICATIONS, new ListSection(
-                "JEE AS: GlassFish (v2.1, v3), OC4J, JBoss, Tomcat, Jetty, WebLogic, WSO2" +
-                        "\n\nVersion control: Subversion, Git, Mercury, ClearCase, Perforce" +
-                        "\n\nDB: PostgreSQL(наследование, pgplsql, PL/Python), Redis (Jedis), H2, Oracle" +
-                        "\n\nMySQL, SQLite, MS SQL, HSQLDB" +
-                        "\n\nLanguages: Java, Scala, Python/Jython/PL-Python, JavaScript, Groovy" +
-                        "\n\nXML/XSD/XSLT, SQL, C/C++, Unix shell scripts" +
-                        "\n\nJava Frameworks: Java 8 (Time API, Streams), Guava, Java Executor, MyBatis, Spring (MVC, Security," +
-                        " Data, Clouds, Boot), JPA\n(Hibernate, EclipseLink), Guice, GWT(SmartGWT, ExtGWT/GXT), " +
-                        "Vaadin, Jasperreports, Apache Commons, Eclipse SWT, JUnit,\nSelenium (htmlelements)" +
-                        "\n\nPython: Django" +
-                        "\n\nJavaScript: jQuery, ExtJS, Bootstrap.js, underscore.js" +
-                        "\n\nScala: SBT, Play2, Specs2, Anorm, Spray, Akka" +
-                        "\n\nТехнологии: Servlet, JSP/JSTL, JAX-WS, REST, EJB, RMI, JMS, JavaMail, JAXB, StAX, SAX, DOM, XSLT, " +
-                        "MDB, JMX,\nJDBC, JPA, JNDI, JAAS, SOAP, AJAX, Commet, HTML5, ESB, CMIS, BPMN2, LDAP, " +
-                        "OAuth1, OAuth2, JWT" +
-                        "\n\nИнструменты: Maven + plugin development, Gradle, настройка Ngnix" +
-                        "\n\nАдминистрирование Hudson/Jenkins, Ant + custom task, SoapUI, JPublisher, Flyway, Nagios, iReport, " +
-                        "OpenCmis, Bonita,\npgBouncer." +
-                        "\n\nОтличное знание и опыт применения концепций ООП, SOA, шаблонов" +
-                        " проектрирования, архитектурных шаблонов, UML,\nфункционального программирования" +
-                        "\n\nРодной русский, английский \"upper intermediate\""
+        resume1.addSection(SectionType.ACHIEVEMENT, new ListSection(
+                "Проведение соревнований пo силовым видам спорта",
+                "Участие в подготовке чемпионов и призеров международных соревнований, кандидатов в мастера спорта, мастеров спорта",
+                "проведение занятий по силовому шейпингу",
+                "проведение групповых занятий по аэробике"
         ));
-
-        // Experience initialization
-        resume.addSection(SectionType.EXPERIENCE,
+        resume1.addSection(SectionType.QUALIFICATIONS, new ListSection(
+                "«Fitness-pro» г. Санкт-Петербург",
+                "«Спортивная диетология» г. Москва",
+                "«Говорим свободно на английском» г. Москва"
+        ));
+        resume1.addSection(SectionType.EXPERIENCE,
                 new OrganizationSection(
-                        new Organization("Java Online Projects", " http://javaops.ru",
-                                LocalDate.of(2013, 10, 1), LocalDate.now(), "Автор проекта.",
-                                "Создание, организация и проведение Java онлайн проектов и стажировок."
-                        ),
-                        new Organization("Wrike", " https://www.wrike.com",
-                                LocalDate.of(2014, 10, 1),
-                                LocalDate.of(2016, 1, 1),
-                                "Старший разработчик (backend).",
-                                "Проектирование и разработка онлайн платформы управления проектами Wrike " +
-                                        "(Java 8 API, Maven, Spring,\n   MyBatis, Guava, Vaadin, PostgreSQL, Redis). " +
-                                        "Двухфакторная аутентификация, авторизация по OAuth1, OAuth2, JWT SSO."
-                        ),
-                        new Organization("RIT Center", null, LocalDate.of(2012, 4, 1),
-                                LocalDate.of(2014, 10, 1),
-                                "Java архитектор", "Организация процесса разработки системы ERP для " +
-                                "разных окружений: релизная политика, версионирование,\n   ведение CI (Jenkins), " +
-                                "миграция базы (кастомизация Flyway), конфигурирование системы (pgBoucer, Nginx), " +
-                                "\n   AAA via SSO. Архитектура БД и серверной части системы. Разработка интергационных " +
-                                "сервисов: CMIS,\n   BPMN2, 1C (WebServices), сервисов общего назначения (почта, " +
-                                "экспорт в pdf, doc, html). Интеграция Alfresco\n   JLAN для online редактирование из " +
-                                "браузера документов MS Office. Maven + plugin development, Ant, Apache\n   Commons, " +
-                                "Spring security, Spring MVC, Tomcat,WSO2, xcmis, OpenCmis, Bonita, Python " +
-                                "scripting, Unix shell\n   remote scripting via ssh tunnels, PL/Python"
-                        ),
-                        new Organization("Luxoft (Deutsche Bank)", " http://www.luxoft.ru/",
-                                LocalDate.of(2010, 12, 1),
-                                LocalDate.of(2012, 4, 1),
-                                "Ведущий программист", "Участие в проекте Deutsche Bank CRM (WebLogic, " +
-                                "Hibernate, Spring, Spring MVC, SmartGWT, GWT, Jasper,\n   Oracle). Реализация " +
-                                "клиентской и серверной части CRM. Реализация RIA-приложения для\n   администрирования, " +
-                                "мониторинга и анализа результатов в области алгоритмического трейдинга. JPA, " +
-                                "Spring,\n   Spring-MVC, GWT, ExtGWT (GXT), Highstock, Commet, HTML5."
-                        ),
-                        new Organization("Yota", " https://www.yota.ru/",
-                                LocalDate.of(2008, 6, 1),
-                                LocalDate.of(2010, 12, 1),
-                                "Ведущий специалист", "Дизайн и имплементация Java EE фреймворка для " +
-                                "отдела \"Платежные Системы\" (GlassFish v2.1, v3, OC4J,\n   EJB3, JAX-WS RI 2.1, " +
-                                "Servlet 2.4, JSP, JMX, JMS, Maven2). Реализация администрирования, статистики и " +
-                                "\n   мониторинга фреймворка. Разработка online JMX клиента (Python/ Jython, " +
-                                "Django, ExtJS)"
-                        ),
-                        new Organization("Enkata", " http://enkata.com/",
-                                LocalDate.of(2007, 3, 1),
-                                LocalDate.of(2008, 6, 1),
-                                "Разработчик ПО", "Реализация клиентской (Eclipse RCP) и серверной " +
-                                "(JBoss 4.2, Hibernate 3.0, Tomcat, JMS) частей кластерного\n   J2EE приложения " +
-                                "(OLAP, Data mining)."
-                        ),
-                        new Organization("Siemens AG", " https://www.siemens.com/ru/ru/home.html",
-                                LocalDate.of(2005, 1, 1),
-                                LocalDate.of(2007, 2, 1),
-                                "Разработчик ПО", "Разработка информационной модели, проектирование " +
-                                "интерфейсов, реализация и отладка ПО на мобильной\n   IN платформе Siemens @vantage " +
-                                "(Java, Unix)."
-                        ),
-                        new Organization("Alcatel", " http://www.alcatel.ru/",
-                                LocalDate.of(1997, 9, 1),
-                                LocalDate.of(2005, 1, 1),
-                                "Инженер по аппаратному и программному тестированию", "Тестирование, " +
-                                "отладка, внедрение ПО цифровой телефонной станции Alcatel 1000 S12 (CHILL, ASM)."
+                        new Organization("FITTERRA", "",
+                                new Organization.Position(2015, Month.OCTOBER,
+                                        "Trainer",
+                                        "Work in fitness club"
+                                )
                         )
                 )
         );
-
-        // Education initialization
-        resume.addSection(SectionType.EDUCATION,
+        resume1.addSection(SectionType.EDUCATION,
                 new OrganizationSection(
-                        new Organization("Coursera", " https://www.coursera.org/course/progfun",
-                                LocalDate.of(2013, 3, 1),
-                                LocalDate.of(2013, 5, 1),
-                                "",
-                                "\"Functional Programming Principles in Scala\" by Martin Odersky"
-                        ),
-                        new Organization("Luxoft",
-                                " http://www.luxoft-training.ru/training/catalog/course.html?ID=22366",
-                                LocalDate.of(2011, 3, 1),
-                                LocalDate.of(2011, 4, 1),
-                                "",
-                                "Курс \"Объектно-ориентированный анализ ИС. Концептуальное моделирование " +
-                                        "на UML.\""
-                        ),
-                        new Organization("Siemens AG", " http://www.siemens.ru/",
-                                LocalDate.of(2005, 1, 1),
-                                LocalDate.of(2005, 4, 1),
-                                "",
-                                "3 месяца обучения мобильным IN сетям (Берлин)"
-                        ),
-                        new Organization("Alcatel", " http://www.alcatel.ru/",
-                                LocalDate.of(1997, 9, 1),
-                                LocalDate.of(1998, 3, 1),
-                                "",
-                                "6 месяцев обучения цифровым телефонным сетям (Москва)"
-                        ),
-                        new Organization("Санкт-Петербургский национальный исследовательский университет " +
-                                "информационных технологий, механики и оптики", " http://www.ifmo.ru/",
-                                LocalDate.of(1993, 9, 1),
-                                LocalDate.of(1996, 7, 1),
-                                "",
-                                "Аспирантура (программист С, С++)"
-                        ),
-                        new Organization("", null, LocalDate.of(1987, 9, 1),
-                                LocalDate.of(1993, 7, 1),
-                                "",
-                                "Инженер (программист Fortran, C)"
-                        ),
-                        new Organization("Заочная физико-техническая школа при МФТИ",
-                                " http://www.school.mipt.ru/",
-                                LocalDate.of(1984, 9, 1),
-                                LocalDate.of(1987, 6, 1),
-                                "",
-                                "Закончил с отличием"
+                        new Organization("Физкультурный техникум", "",
+                                new Organization.Position(2010, Month.SEPTEMBER, 2013, Month.JUNE,
+                                        "Преподаватель физкультуры", ""
+                                )
                         )
                 )
         );
+        return resume1;
+    }
 
-        //Result
-        System.out.println(resume);
+    public static Resume createResume2(String uuid, String fullName) {
+        Resume resume2 = new Resume(uuid, fullName);
+        resume2.addContact(ContactType.PHONE, "999-98-78");
+        resume2.addContact(ContactType.MAIL, "homepage.com");
+        resume2.addSection(SectionType.OBJECTIVE, new TextSection("Наладчик трубопрокатных станков"));
+        resume2.addSection(SectionType.PERSONAL, new TextSection(
+                "Коммуникабельный, ответственный, пунктуальный, внимательный"
+        ));
+        resume2.addSection(SectionType.ACHIEVEMENT, new ListSection(
+                "Выполнение ремонтов и модернизации оборудования",
+                "обеспечение технической эксплуатации, своевременной и качественной подготовки производства, ремонта и модернизации оборудования, его эффективности работы",
+                "координация сотрудничества с контролирующими и инспектирующими органами"
+        ));
+        resume2.addSection(SectionType.QUALIFICATIONS, new ListSection(
+                "MS Office",
+                "MS Excel",
+                "Scad SYSTEMS",
+                "EPLAN"
+        ));
+        resume2.addSection(SectionType.EXPERIENCE,
+                new OrganizationSection(
+                        new Organization("InterPIPE", "http://interpipe.biz/",
+                                new Organization.Position(2011, Month.NOVEMBER, 2018, Month.OCTOBER,
+                                        "Engineer",
+                                        "Repair of mechanic equipment"
+                                )
+                        )
+                )
+        );
+        resume2.addSection(SectionType.EDUCATION,
+                new OrganizationSection(
+                        new Organization("Саратовский Технический Университет", "http://STU.ru/",
+                                new Organization.Position(2005, Month.SEPTEMBER, 2013, Month.JUNE,
+                                        "Инженер технолог", ""
+                                ),
+                                new Organization.Position(2010, Month.AUGUST, 2013, Month.MAY,
+                                        "Аспирантура", ""
+                                )
+                        )
+                )
+        );
+        return resume2;
+    }
+
+    public static Resume createResume3(String uuid, String fullName) {
+        Resume resume3 = new Resume(uuid, fullName);
+        resume3.addContact(ContactType.PHONE, "654-00-48");
+        resume3.addSection(SectionType.OBJECTIVE, new TextSection("Инженер-сметчик"));
+        resume3.addSection(SectionType.PERSONAL, new TextSection("Внимание к деталям, стрессоустойчивость"));
+        resume3.addSection(SectionType.ACHIEVEMENT, new ListSection(
+                "Ведение объектов строительства финансируемых из государственного бюджета",
+                "Защита выполненных работ перед заказчиком",
+                "Составление калькуляций"
+        ));
+        resume3.addSection(SectionType.QUALIFICATIONS, new ListSection(
+                "Строительные технологии смета",
+                "Смета ПИР",
+                "Тендер-контракт интеллектуальные системы",
+                "ГрандСмета РФ"
+        ));
+        resume3.addSection(SectionType.EXPERIENCE,
+                new OrganizationSection(
+                        new Organization("DONBUDMONTAG", "",
+                                new Organization.Position(2010, Month.DECEMBER, 2015, Month.MARCH,
+                                        "Cost estimator",
+                                        "Cost planning"
+                                )
+                        )
+                )
+        );
+        resume3.addSection(SectionType.EDUCATION,
+                new OrganizationSection(
+                        new Organization("Томский Строительный Университет", "http://TSU.com/",
+                                new Organization.Position(2003, Month.SEPTEMBER, 2008, Month.JUNE,
+                                        "Инженер строитель", ""
+                                )
+                        )
+                )
+        );
+        return resume3;
+    }
+
+    public static Resume createResume4(String uuid, String fullName) {
+        Resume resume4 = new Resume(uuid, fullName);
+        resume4.addContact(ContactType.PHONE, "784-10-08");
+        resume4.addSection(SectionType.OBJECTIVE, new TextSection("Мастер маникюра"));
+        resume4.addSection(SectionType.PERSONAL, new TextSection("Выдержка, умение находить оригинальные идеи"));
+        resume4.addSection(SectionType.ACHIEVEMENT, new ListSection(
+                "Аппаратный маникюр",
+                "Классически маникюр",
+                "Технология стемпинг"
+        ));
+        resume4.addSection(SectionType.QUALIFICATIONS, new ListSection(
+                "МАСТЕР ПОД КЛЮЧ - г. Киев",
+                "Стильные дизайны - г. Днепр"
+        ));
+        resume4.addSection(SectionType.EXPERIENCE,
+                new OrganizationSection(
+                        new Organization("NOVA POSHTA", "novaposhta.ua",
+                                new Organization.Position(2012, Month.JUNE,
+                                        "Operator",
+                                        "Solving of customer problems"
+                                )
+                        )
+                )
+        );
+        resume4.addSection(SectionType.EDUCATION,
+                new OrganizationSection(
+                        new Organization("Новосибирская Академия Красоты", "http://NBA.ru/",
+                                new Organization.Position(2008, Month.AUGUST, 2011, Month.JULY,
+                                        "Стилист - визажист", ""
+                                )
+                        )
+                )
+        );
+        return resume4;
     }
 }
