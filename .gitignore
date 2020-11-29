@@ -4,3 +4,4 @@ out
 log
 *.md
 lib
+/storage/
