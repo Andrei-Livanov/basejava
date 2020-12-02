@@ -82,7 +82,9 @@ public class FileStorage extends AbstractStorage<File> {
 
     @Override
     public void clear() {
-        for (File file : getFiles()) doDelete(file);
+        for (File file : getFiles()) {
+            doDelete(file);
+        }
     }
 
     @Override
