@@ -1,13 +1,11 @@
 package ru.javawebinar.basejava;
 
-import ru.javawebinar.basejava.model.*;
-
-import java.time.Month;
+import ru.javawebinar.basejava.model.Resume;
 
 public class ResumeTestData {
     public static Resume createResume1(String uuid, String fullName) {
         Resume resume1 = new Resume(uuid, fullName);
-        resume1.addContact(ContactType.PHONE, "555-55-55");
+/*        resume1.addContact(ContactType.PHONE, "555-55-55");
         resume1.addContact(ContactType.MAIL, "email@mail.com");
         resume1.addSection(SectionType.OBJECTIVE, new TextSection("Персональный тренер по фитнесу"));
         resume1.addSection(SectionType.PERSONAL, new TextSection(
@@ -42,13 +40,13 @@ public class ResumeTestData {
                                 )
                         )
                 )
-        );
+        );*/
         return resume1;
     }
 
     public static Resume createResume2(String uuid, String fullName) {
         Resume resume2 = new Resume(uuid, fullName);
-        resume2.addContact(ContactType.PHONE, "999-98-78");
+/*        resume2.addContact(ContactType.PHONE, "999-98-78");
         resume2.addContact(ContactType.MAIL, "homepage.com");
         resume2.addSection(SectionType.OBJECTIVE, new TextSection("Наладчик трубопрокатных станков"));
         resume2.addSection(SectionType.PERSONAL, new TextSection(
@@ -86,13 +84,13 @@ public class ResumeTestData {
                                 )
                         )
                 )
-        );
+        );*/
         return resume2;
     }
 
     public static Resume createResume3(String uuid, String fullName) {
         Resume resume3 = new Resume(uuid, fullName);
-        resume3.addContact(ContactType.PHONE, "654-00-48");
+/*        resume3.addContact(ContactType.PHONE, "654-00-48");
         resume3.addSection(SectionType.OBJECTIVE, new TextSection("Инженер-сметчик"));
         resume3.addSection(SectionType.PERSONAL, new TextSection("Внимание к деталям, стрессоустойчивость"));
         resume3.addSection(SectionType.ACHIEVEMENT, new ListSection(
@@ -124,13 +122,13 @@ public class ResumeTestData {
                                 )
                         )
                 )
-        );
+        );*/
         return resume3;
     }
 
     public static Resume createResume4(String uuid, String fullName) {
         Resume resume4 = new Resume(uuid, fullName);
-        resume4.addContact(ContactType.PHONE, "784-10-08");
+/*        resume4.addContact(ContactType.PHONE, "784-10-08");
         resume4.addSection(SectionType.OBJECTIVE, new TextSection("Мастер маникюра"));
         resume4.addSection(SectionType.PERSONAL, new TextSection("Выдержка, умение находить оригинальные идеи"));
         resume4.addSection(SectionType.ACHIEVEMENT, new ListSection(
@@ -160,7 +158,7 @@ public class ResumeTestData {
                                 )
                         )
                 )
-        );
+        );*/
         return resume4;
     }
 }
