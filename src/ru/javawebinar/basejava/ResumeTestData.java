@@ -1,7 +1,6 @@
 package ru.javawebinar.basejava;
 
-import ru.javawebinar.basejava.model.ContactType;
-import ru.javawebinar.basejava.model.Resume;
+import ru.javawebinar.basejava.model.*;
 
 public class ResumeTestData {
     public static Resume createResume1(String uuid, String fullName) {
@@ -9,7 +8,7 @@ public class ResumeTestData {
         resume1.addContact(ContactType.PHONE, "555-55-55");
         resume1.addContact(ContactType.MAIL, "email@mail.com");
 
-/*        resume1.addSection(SectionType.OBJECTIVE, new TextSection("Персональный тренер по фитнесу"));
+        resume1.addSection(SectionType.OBJECTIVE, new TextSection("Персональный тренер по фитнесу"));
         resume1.addSection(SectionType.PERSONAL, new TextSection(
                 "Хopoшaя физичeckaя фopma, вынocливый, цeлeycтpemлeнный, cтpeccoycтoйчивый, тpyдoлюбивый"
         ));
@@ -20,11 +19,11 @@ public class ResumeTestData {
                 "проведение групповых занятий по аэробике"
         ));
         resume1.addSection(SectionType.QUALIFICATIONS, new ListSection(
-                "«Fitness-pro» г. Санкт-Петербург",
-                "«Спортивная диетология» г. Москва",
-                "«Говорим свободно на английском» г. Москва"
+                "Fitness-pro» г. Санкт-Петербург",
+                "Спортивная диетология» г. Москва",
+                "Говорим свободно на английском» г. Москва"
         ));
-        resume1.addSection(SectionType.EXPERIENCE,
+/*        resume1.addSection(SectionType.EXPERIENCE,
                 new OrganizationSection(
                         new Organization("FITTERRA", "",
                                 new Organization.Position(2015, Month.OCTOBER,
@@ -51,7 +50,7 @@ public class ResumeTestData {
         resume2.addContact(ContactType.PHONE, "999-98-78");
         resume2.addContact(ContactType.MAIL, "homepage.com");
 
-/*        resume2.addSection(SectionType.OBJECTIVE, new TextSection("Наладчик трубопрокатных станков"));
+        resume2.addSection(SectionType.OBJECTIVE, new TextSection("Наладчик трубопрокатных станков"));
         resume2.addSection(SectionType.PERSONAL, new TextSection(
                 "Коммуникабельный, ответственный, пунктуальный, внимательный"
         ));
@@ -66,7 +65,7 @@ public class ResumeTestData {
                 "Scad SYSTEMS",
                 "EPLAN"
         ));
-        resume2.addSection(SectionType.EXPERIENCE,
+/*        resume2.addSection(SectionType.EXPERIENCE,
                 new OrganizationSection(
                         new Organization("InterPIPE", "http://interpipe.biz/",
                                 new Organization.Position(2011, Month.NOVEMBER, 2018, Month.OCTOBER,
@@ -95,7 +94,7 @@ public class ResumeTestData {
         Resume resume3 = new Resume(uuid, fullName);
         resume3.addContact(ContactType.PHONE, "654-00-48");
 
-/*        resume3.addSection(SectionType.OBJECTIVE, new TextSection("Инженер-сметчик"));
+        resume3.addSection(SectionType.OBJECTIVE, new TextSection("Инженер-сметчик"));
         resume3.addSection(SectionType.PERSONAL, new TextSection("Внимание к деталям, стрессоустойчивость"));
         resume3.addSection(SectionType.ACHIEVEMENT, new ListSection(
                 "Ведение объектов строительства финансируемых из государственного бюджета",
@@ -108,7 +107,7 @@ public class ResumeTestData {
                 "Тендер-контракт интеллектуальные системы",
                 "ГрандСмета РФ"
         ));
-        resume3.addSection(SectionType.EXPERIENCE,
+/*        resume3.addSection(SectionType.EXPERIENCE,
                 new OrganizationSection(
                         new Organization("DONBUDMONTAG", "",
                                 new Organization.Position(2010, Month.DECEMBER, 2015, Month.MARCH,
@@ -134,7 +133,7 @@ public class ResumeTestData {
         Resume resume4 = new Resume(uuid, fullName);
         resume4.addContact(ContactType.PHONE, "784-10-08");
 
-/*        resume4.addSection(SectionType.OBJECTIVE, new TextSection("Мастер маникюра"));
+        resume4.addSection(SectionType.OBJECTIVE, new TextSection("Мастер маникюра"));
         resume4.addSection(SectionType.PERSONAL, new TextSection("Выдержка, умение находить оригинальные идеи"));
         resume4.addSection(SectionType.ACHIEVEMENT, new ListSection(
                 "Аппаратный маникюр",
@@ -145,7 +144,7 @@ public class ResumeTestData {
                 "МАСТЕР ПОД КЛЮЧ - г. Киев",
                 "Стильные дизайны - г. Днепр"
         ));
-        resume4.addSection(SectionType.EXPERIENCE,
+/*        resume4.addSection(SectionType.EXPERIENCE,
                 new OrganizationSection(
                         new Organization("NOVA POSHTA", "novaposhta.ua",
                                 new Organization.Position(2012, Month.JUNE,
