@@ -182,11 +182,11 @@ public class SqlStorage implements Storage {
                     switch (e.getKey()) {
                         case PERSONAL:
                         case OBJECTIVE:
-                            ps.setString(3, e.getValue().toString());
+                            ps.setString(3,((TextSection) e.getValue()).getContent());
                             break;
                         case ACHIEVEMENT:
                         case QUALIFICATIONS:
-                            ps.setString(3, ((ListSection) e.getValue()).getItems().stream().map(Object::toString).collect(Collectors.joining("\n")));
+                            ps.setString(3, ((ListSection) e.getValue()).getItems().stream().map(String::valueOf).collect(Collectors.joining("\n")));
                             break;
                     }
                     ps.addBatch();
