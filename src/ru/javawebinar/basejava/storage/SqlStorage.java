@@ -3,10 +3,10 @@ package ru.javawebinar.basejava.storage;
 import ru.javawebinar.basejava.exception.NotExistStorageException;
 import ru.javawebinar.basejava.model.*;
 import ru.javawebinar.basejava.sql.SqlHelper;
+import ru.javawebinar.basejava.util.JsonParser;
 
 import java.sql.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class SqlStorage implements Storage {
     public final SqlHelper sqlHelper;
@@ -182,11 +182,15 @@ public class SqlStorage implements Storage {
                     switch (e.getKey()) {
                         case PERSONAL:
                         case OBJECTIVE:
-                            ps.setString(3,((TextSection) e.getValue()).getContent());
+                            ps.setString(3, ((TextSection) e.getValue()).getContent());
                             break;
                         case ACHIEVEMENT:
                         case QUALIFICATIONS:
-                            ps.setString(3, ((ListSection) e.getValue()).getItems().stream().map(String::valueOf).collect(Collectors.joining("\n")));
+                            ps.setString(3, String.join("\n", ((ListSection) e.getValue()).getItems()));
+                            break;
+                        case EXPERIENCE:
+                        case EDUCATION:
+                            ps.setString(3, JsonParser.write(e.getValue(), AbstractSection.class));
                             break;
                     }
                     ps.addBatch();
@@ -199,7 +203,7 @@ public class SqlStorage implements Storage {
     private void addContact(ResultSet rs, Resume resume) throws SQLException {
         String value = rs.getString("value");
         if (value != null) {
-            resume.addContact(ContactType.valueOf(rs.getString("type")), value);
+            resume.setContact(ContactType.valueOf(rs.getString("type")), value);
         }
     }
 
@@ -216,9 +220,13 @@ public class SqlStorage implements Storage {
             case QUALIFICATIONS:
                 section = new ListSection(Arrays.asList(content.split("\n")));
                 break;
+            case EXPERIENCE:
+            case EDUCATION:
+                section = (JsonParser.read(content, AbstractSection.class));
+                break;
         }
         if (content != null) {
-            resume.addSection(type, section);
+            resume.setSection(type, section);
         }
     }
 }
