@@ -50,7 +50,7 @@ public class ResumeTestData {
     public static Resume createResume2(String uuid, String fullName) {
         Resume resume2 = new Resume(uuid, fullName);
         resume2.setContact(ContactType.PHONE, "999-98-78");
-        resume2.setContact(ContactType.MAIL, "homepage.com");
+        resume2.setContact(ContactType.MAIL, "ivanov_p@gmail.com");
 
         resume2.setSection(SectionType.OBJECTIVE, new TextSection("Наладчик трубопрокатных станков"));
         resume2.setSection(SectionType.PERSONAL, new TextSection(
@@ -95,6 +95,7 @@ public class ResumeTestData {
     public static Resume createResume3(String uuid, String fullName) {
         Resume resume3 = new Resume(uuid, fullName);
         resume3.setContact(ContactType.PHONE, "654-00-48");
+        resume3.setContact(ContactType.MAIL, "pavel.k@ya.ru");
 
         resume3.setSection(SectionType.OBJECTIVE, new TextSection("Инженер-сметчик"));
         resume3.setSection(SectionType.PERSONAL, new TextSection("Внимание к деталям, стрессоустойчивость"));
